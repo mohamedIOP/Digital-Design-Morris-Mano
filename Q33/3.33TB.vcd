@@ -1,0 +1,79 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "D:\iverilog\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\iverilog\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\iverilog\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\iverilog\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\iverilog\iverilog\lib\ivl\va_math.vpi";
+S_000002600e016c40 .scope module, "tb_Q33" "tb_Q33" 2 17;
+ .timescale -9 -12;
+v000002600e0126a0_0 .net "F", 0 0, L_000002600e013900;  1 drivers
+v000002600e012740_0 .var "x", 0 0;
+v000002600e0127e0_0 .var "y", 0 0;
+S_000002600e016dd0 .scope module, "M0" "Q33" 2 20, 2 3 0, S_000002600e016c40;
+ .timescale -9 -12;
+    .port_info 0 /OUTPUT 1 "F";
+    .port_info 1 /INPUT 1 "X";
+    .port_info 2 /INPUT 1 "Y";
+L_000002600dfe34c0/d .functor NOT 1, v000002600e012740_0, C4<0>, C4<0>, C4<0>;
+L_000002600dfe34c0 .delay 1 (3000,3000,3000) L_000002600dfe34c0/d;
+L_000002600dfe3620/d .functor NOT 1, v000002600e0127e0_0, C4<0>, C4<0>, C4<0>;
+L_000002600dfe3620 .delay 1 (3000,3000,3000) L_000002600dfe3620/d;
+L_000002600dfe3780/d .functor AND 1, v000002600e012740_0, L_000002600dfe3620, C4<1>, C4<1>;
+L_000002600dfe3780 .delay 1 (6000,6000,6000) L_000002600dfe3780/d;
+L_000002600e013890/d .functor AND 1, v000002600e0127e0_0, L_000002600dfe34c0, C4<1>, C4<1>;
+L_000002600e013890 .delay 1 (6000,6000,6000) L_000002600e013890/d;
+L_000002600e013900/d .functor OR 1, L_000002600dfe3780, L_000002600e013890, C4<0>, C4<0>;
+L_000002600e013900 .delay 1 (8000,8000,8000) L_000002600e013900/d;
+v000002600dfc9310_0 .net "F", 0 0, L_000002600e013900;  alias, 1 drivers
+v000002600dfe30e0_0 .net "X", 0 0, v000002600e012740_0;  1 drivers
+v000002600dfcbd70_0 .net "Y", 0 0, v000002600e0127e0_0;  1 drivers
+v000002600dfcbe10_0 .net "w1", 0 0, L_000002600dfe3620;  1 drivers
+v000002600e0124c0_0 .net "w2", 0 0, L_000002600dfe34c0;  1 drivers
+v000002600e012560_0 .net "w3", 0 0, L_000002600dfe3780;  1 drivers
+v000002600e012600_0 .net "w4", 0 0, L_000002600e013890;  1 drivers
+    .scope S_000002600e016c40;
+T_0 ;
+    %vpi_call 2 25 "$dumpfile", "tb_Q33.vcd" {0 0 0};
+    %vpi_call 2 27 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002600e016c40 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_000002600e016c40;
+T_1 ;
+    %delay 200000, 0;
+    %vpi_call 2 30 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_000002600e016c40;
+T_2 ;
+    %fork t_1, S_000002600e016c40;
+    %fork t_2, S_000002600e016c40;
+    %fork t_3, S_000002600e016c40;
+    %join;
+    %join;
+    %join;
+    %jmp t_0;
+t_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002600e012740_0, 0, 1;
+    %end;
+t_2 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002600e0127e0_0, 0, 1;
+    %end;
+t_3 ;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002600e0127e0_0, 0, 1;
+    %end;
+    .scope S_000002600e016c40;
+t_0 ;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "3.33TB.v";

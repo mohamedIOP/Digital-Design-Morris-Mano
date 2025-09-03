@@ -1,0 +1,38 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "D:\iverilog\iverilog\lib\ivl\system.vpi";
+:vpi_module "D:\iverilog\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "D:\iverilog\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "D:\iverilog\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "D:\iverilog\iverilog\lib\ivl\va_math.vpi";
+S_000002ad079d2db0 .scope module, "Q33" "Q33" 2 3;
+ .timescale -9 -12;
+    .port_info 0 /OUTPUT 1 "F";
+    .port_info 1 /INPUT 1 "X";
+    .port_info 2 /INPUT 1 "Y";
+o000002ad07a07008 .functor BUFZ 1, C4<z>; HiZ drive
+L_000002ad079d3480/d .functor NOT 1, o000002ad07a07008, C4<0>, C4<0>, C4<0>;
+L_000002ad079d3480 .delay 1 (3000,3000,3000) L_000002ad079d3480/d;
+o000002ad07a07038 .functor BUFZ 1, C4<z>; HiZ drive
+L_000002ad079d35e0/d .functor NOT 1, o000002ad07a07038, C4<0>, C4<0>, C4<0>;
+L_000002ad079d35e0 .delay 1 (3000,3000,3000) L_000002ad079d35e0/d;
+L_000002ad079d3740/d .functor AND 1, o000002ad07a07008, L_000002ad079d35e0, C4<1>, C4<1>;
+L_000002ad079d3740 .delay 1 (6000,6000,6000) L_000002ad079d3740/d;
+L_000002ad079be560/d .functor AND 1, o000002ad07a07038, L_000002ad079d3480, C4<1>, C4<1>;
+L_000002ad079be560 .delay 1 (6000,6000,6000) L_000002ad079be560/d;
+L_000002ad079be5d0/d .functor OR 1, L_000002ad079d3740, L_000002ad079be560, C4<0>, C4<0>;
+L_000002ad079be5d0 .delay 1 (8000,8000,8000) L_000002ad079be5d0/d;
+v000002ad079d2f40_0 .net "F", 0 0, L_000002ad079be5d0;  1 drivers
+v000002ad079d2fe0_0 .net "X", 0 0, o000002ad07a07008;  0 drivers
+v000002ad079d3080_0 .net "Y", 0 0, o000002ad07a07038;  0 drivers
+v000002ad079be2e0_0 .net "w1", 0 0, L_000002ad079d35e0;  1 drivers
+v000002ad079be380_0 .net "w2", 0 0, L_000002ad079d3480;  1 drivers
+v000002ad079be420_0 .net "w3", 0 0, L_000002ad079d3740;  1 drivers
+v000002ad079be4c0_0 .net "w4", 0 0, L_000002ad079be560;  1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "3.33.v";
