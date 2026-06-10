@@ -84,12 +84,6 @@ Found a bug or want to add missing chapters? Feel free to:
 
 ---
 
-## 📚 Reference
-
-> M. Morris Mano & Michael D. Ciletti — *Digital Design: With an Introduction to the Verilog HDL, VHDL, and SystemVerilog*, 5th Edition. Pearson, 2013.
-
----
-
 ## 👤 Author
 
 - **[mohamedIOP](https://github.com/mohamedIOP)** (SAWY) — Solutions author & repository maintainer
